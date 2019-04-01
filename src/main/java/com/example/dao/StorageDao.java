@@ -17,13 +17,12 @@ public class StorageDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public Serializable add(Request request){
+    public void add(Request request){
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
         Serializable save = session.save(request);
         tx.commit();
 
-        return save;
     }
 
     public Request retrieve(String id ){

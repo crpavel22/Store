@@ -65,15 +65,11 @@ public class MainController {
         }
 
 
-        Serializable result = storageDao.add(r);
-
-        if (result != null){
+        storageDao.add(r);
 
 
-            return new ResponseEntity<>(result.toString(), HttpStatus.CREATED);
-        }
 
-        return null;
+        return new ResponseEntity<>(r.getStrId(),HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/storage/documents/{documentId}", method = RequestMethod.PUT)
